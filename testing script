@@ -1,0 +1,64 @@
+for i in `cat id.txt` ; do wget -O - https://chrome.google.com/webstore/detail/bgkodfmeijboinjdegggmkbkjfiagaan --max-redirect 0 --append-output=nlogfile >> nlogfile ; echo "$i Completed" ;    done
+
+cat zlogfile |  grep following | awk -F / '{ print $(NF-1) }'
+
+for i in `cat id.txt` ; do wget -O - https://chrome.google.com/webstore/detail/$i --max-redirect 0 --append-output=zlogfile >> zlogfile ; echo "$i Completed" ;    done
+
+
+for i in `cat id.txt` ; do wget -O - https://chrome.google.com/webstore/detail/$i --max-redirect 0 --append-output=nlogfile >> nlogfile ; echo "$i Completed" ;    done
+
+cat zlogfile |  grep following | awk -F / '{print $(NF-1),"\r\t",$NF}' | sed "s/\[following\]//"
+
+
+wget https://api.crxcavator.io/v1/report/aijcgkcgldkomeddnlpbhdelcpfamklm
+
+ wget -O - https://api.crxcavator.io/v1/report/aijcgkcgldkomeddnlpbhdelcpfamklm --append-output=crxlogfile >> crxlogfile 
+
+
+cat aijcgkcgldkomeddnlpbhdelcpfamklm  | jq '.[] | {val: .data.risk.csp.total}' | grep val | awk '{print $2}'
+
+
+for i in `cat id.txt` ; do wget -q https://api.crxcavator.io/v1/report/$i ; \
+score=`cat $i | jq '.[] | {val: .data.risk.csp.total}' | grep val | awk '{print $2}'`
+echo "$i $score" ; done
+
+
+
+names=`for n in `ls  | grep -v 'id.txt' do wget -O - https://chrome.google.com/webstore/detail/$i --max-redirect 0 --append-output=nglogfile >> nglogfile ;cat nglogfile |  grep following | awk -F / '{ print $(NF-1) }'`;echo $names; done 
+for j in `ls  | grep -v 'id.txt'` ; do score=`cat $j | jq '.[] | {val: .data.risk.csp.total}' \
+| grep val | awk '{print $2}' | tail -1 ` ; echo -e "$j \t $score" | grep -vr 'null' ; done 2>/dev/null
+
+
+
+for n in `ls  | grep -v 'id.txt'`; do wget -O - https://chrome.google.com/webstore/detail/$n --max-redirect 0 --append-output=yglogfile >> yglogfile ;echo "$n completed" ; done
+
+name=`cat yglogfile |  grep following | awk -F / '{ print $(NF-1) }'`
+
+
+for j in `ls  | grep -v 'id.txt'` ; do score=`cat $j | jq '.[] | {val: .data.risk.csp.total}' \
+| grep val | awk '{print $2}' | tail -1 ` ; echo -e "$j \t  $score" | grep -vr 'null' ; done 2>/dev/null
+
+cat nioieekamcpjfleokdcdifpmclkohddp | jq '.[0] | {Name : .data.manifest.browser_action.default_title,Risk: .data.risk.csp.total}' | tr -d '\n'
+
+cat nioieekamcpjfleokdcdifpmclkohddp | jq '.[0] | {Name : .data.manifest.browser_action.default_title,Risk: .data.risk.csp.total}' | tr -d '\n' ; echo -e "\n"
+
+
+######################
+
+for i in `cat id.txt` ; do wget -q https://api.crxcavator.io/v1/report/$i ; echo "$i done" ;done
+
+for j in `ls  | grep -v 'id.txt'` ; do cat $j | jq '.[0] | {Name : .data.manifest.browser_action.default_title,Risk: .data.risk.csp.total}' | tr -d '\n' ; echo -e "\n" | grep -iv null; rm $j ; done
+
+for j in `ls  | grep -v 'id.txt'` ; do cat $j | jq '.[0] | {Name : .data.manifest.browser_action.default_title,Risk: .data.risk.csp.total}' | tr -d '\n' | grep -v null | sed 's/[{}]//g' | sed 's/,//g' | sed 's/"//g' ;  done
+
+
+ for j in `ls  | grep -v 'id.txt'` ; do cat $j  | jq '.[0] | {ID: .extension_id, Name : .data.manifest.browser_action.default_title, Risk: .data.risk.csp.total}' | \
+  tr -d '\n' | grep -v null | sed 's/[{}]//g' | sed 's/,//g' | sed 's/"//g' ;  done
+
+
+for j in `ls  | grep -v 'id.txt'` ; do cat $j  | jq '.[0] | {ID: .extension_id, Name : .data.manifest.browser_action.default_title, Score: .data.risk.total}' | \
+  tr -d '\n' | grep -v null | sed 's/[{}]//g' | sed 's/,//g' | sed 's/"//g' ;  done
+ 
+
+
+
