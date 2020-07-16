@@ -15,7 +15,7 @@ hipbfijinpcgfogaopmgehiegacbhmob
 
 #!/bin/bash
 
-for i in `cat /tmp/extension_id` ; do wget -O - https://chrome.google.com/webstore/detail/$i --max-redirect 0 --append-output=zlogfile >> /tmp/zlogfile \
+for i in `cat /tmp/extension_id` ; do wget -O - https://chrome.google.com/webstore/detail/$i --max-redirect 0 --append-output=/tmp/zlogfile >> /tmp/zlogfile \
 ; echo "$i Completed" ;    done
 
 cat /tmp/zlogfile |  grep following | awk -F / '{print $(NF-1),"\r\t",$NF}' | sed "s/\[following\]//"
